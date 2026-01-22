@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Excel Básico-Intermedio | Centro Cultural Sampedrano</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #217346;
+            --secondary: #2E75B6;
+            --accent: #FF6B35;
+            --light: #F8F9FA;
+            --dark: #2C3E50;
+            --gray: #6C757D;
+            --excel-green: #217346;
+            --excel-blue: #2E75B6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--excel-green) 0%, var(--excel-blue) 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e55a2b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--excel-green) 0%, var(--excel-blue) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--excel-green) 0%, var(--excel-blue) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+        }
+
+        .highlight {
+            color: var(--excel-green);
+            font-weight: 700;
+        }
+
+        .excel-icon {
+            font-size: 4rem;
+            color: var(--excel-green);
+            margin-bottom: 20px;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--excel-green) 0%, var(--excel-blue) 100%);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* Descripción y Público */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--excel-green);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--excel-green);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Temario */
+        .temario-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
+        }
+
+        .modulo {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--excel-blue);
+        }
+
+        .modulo:last-child {
+            margin-bottom: 0;
+        }
+
+        .modulo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modulo-title {
+            font-size: 1.4rem;
+            color: var(--excel-blue);
+            font-weight: 600;
+        }
+
+        .modulo-badge {
+            background-color: var(--excel-green);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .modulo-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modulo-content li {
+            margin-bottom: 8px;
+        }
+
+        .practica {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .practica strong {
+            color: var(--excel-blue);
+        }
+
+        /* Horario y Duración */
+        .horario-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .horario-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--excel-green);
+        }
+
+        .horario-card i {
+            font-size: 2.5rem;
+            color: var(--excel-green);
+            margin-bottom: 20px;
+        }
+
+        .horario-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Precio */
+        .pricing-card {
+            background: linear-gradient(135deg, var(--excel-green) 0%, var(--excel-blue) 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .pricing-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-30px, 30px);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price span {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .payment-option {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Inscripción */
+        .inscripcion-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--excel-green);
+            margin-right: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .modulo-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .modulo-badge {
+                margin-top: 10px;
+            }
+
+            .pricing-card {
+                padding: 30px 20px;
+            }
+
+            .price {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <div class="logo-svg">
+                        <img src="https://i.ibb.co/hJcWmjbn/centro-cultural-sampedrano-2.png"
+                            alt="Centro Cultural Sampedrano" width="60" height="50" style="margin-right: 12px;">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main">Centro Cultural Sampedrano</div>
+                        <div class="logo-sub">Formación especializada</div>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#descripcion">Descripción</a>
+                    <a href="#temario">Temario</a>
+                    <a href="#horario">Horario</a>
+                    <a href="#precio">Precio</a>
+                    <a href="#inscripcion">Inscripción</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="excel-icon">
+                <i class="fas fa-file-excel"></i>
+            </div>
+            <h1>Curso de <span>Excel Básico-Intermedio</span></h1>
+            <h2>Aprende Excel de manera práctica y eficiente con ejercicios reales!</h2>
+            <p>Domina las herramientas esenciales de Excel para el trabajo, estudios o emprendimiento. Desde conceptos
+                básicos hasta funciones avanzadas, con enfoque 100% práctico.</p>
+            <a href="#inscripcion" class="btn">¡Quiero Inscribirme!</a>
+        </div>
+    </section>
+
+    <!-- Descripción del Curso -->
+    <section id="descripcion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Descripción del Curso</h2>
+                <p>Este curso te enseña a manejar Excel desde lo básico hasta lo intermedio, con enfoque en operaciones
+                    prácticas. Incluye ejercicios descargables y te ayudaremos a resolver dudas durante el curso.</p>
+            </div>
+
+            <div class="info-cards">
+                <div class="card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Público Objetivo</h3>
+                    <p>Principiantes o intermedios en Excel que deseen:</p>
+                    <ul>
+                        <li>Mejorar sus habilidades laborales</li>
+                        <li>Optimizar procesos de trabajo</li>
+                        <li>Prepararse para exámenes o certificaciones</li>
+                        <li>Gestionar datos personales o empresariales</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Metodología</h3>
+                    <ul>
+                        <li><strong>Enfoque 100% práctico:</strong> Aprende haciendo</li>
+                        <li><strong>Ejercicios reales:</strong> Casos aplicables a situaciones cotidianas</li>
+                        <li><strong>Soporte continuo:</strong> Resolución de dudas durante el curso</li>
+                        <li><strong>Material descargable:</strong> Plantillas y ejercicios para practicar</li>
+                        <li><strong>Sesiones interactivas:</strong> Preguntas y respuestas en vivo</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Lo que lograrás</h3>
+                    <ul>
+                        <li>Dominar las funciones básicas e intermedias de Excel</li>
+                        <li>Crear tablas y gráficos profesionales</li>
+                        <li>Aplicar fórmulas para automatizar tareas</li>
+                        <li>Analizar y visualizar datos eficientemente</li>
+                        <li>Certificado de finalización avalado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Temario -->
+    <section id="temario" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Temario Detallado</h2>
+                <p>8 sesiones estructuradas para llevar tus habilidades de Excel al siguiente nivel</p>
+            </div>
+
+            <div class="temario-container">
+                <!-- Módulo 1 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 1 – Libros y Hojas</div>
+                        <div class="modulo-badge">Fundamentos</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Insertar, nombrar y proteger hojas de trabajo</li>
+                            <li>Manipulación de columnas, filas y celdas</li>
+                            <li>Formatos básicos de celdas</li>
+                            <li>Guardar y organizar libros de trabajo</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Creación de un libro de gestión personal
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 2 – Manipulando Datos</div>
+                        <div class="modulo-badge">Operaciones básicas</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Inserción y formato de datos</li>
+                            <li>Estilos y auto-relleno inteligente</li>
+                            <li>Buscar y reemplazar datos</li>
+                            <li>Ocultar y mostrar elementos</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Organización de una base de datos simple
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 3 – Operaciones con Fórmulas Básicas</div>
+                        <div class="modulo-badge">Cálculos esenciales</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Operaciones aritméticas básicas</li>
+                            <li>Funciones SUM, MAX, MIN</li>
+                            <li>Cálculo de promedios</li>
+                            <li>Funciones de redondeo</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Cálculo de gastos mensuales
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 4 – Visualización y Manejo</div>
+                        <div class="modulo-badge">Análisis de datos</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Comparar libros y ventanas</li>
+                            <li>Formato condicional</li>
+                            <li>Validación de datos</li>
+                            <li>Referencias absolutas y relativas</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Tablero de control básico
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 5 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 5 – Tablas y Gráficos</div>
+                        <div class="modulo-badge">Visualización profesional</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Crear y formatear tablas</li>
+                            <li>Filtros y ordenamiento de datos</li>
+                            <li>Creación de gráficos profesionales</li>
+                            <li>Propiedades y personalización de gráficos</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Informe visual con gráficos dinámicos
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 6 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 6 – Fórmulas Avanzadas</div>
+                        <div class="modulo-badge">Automatización</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Funciones de texto: MAYÚSC, CONCATENAR</li>
+                            <li>CONTAR.SI y SUMAR.SI</li>
+                            <li>Funciones SI anidadas</li>
+                            <li>BUSCARV para cruce de datos</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Sistema de búsqueda y cruce de información
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 7 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 7 – Visualización Avanzada</div>
+                        <div class="modulo-badge">Productividad</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Exportar a PDF y otros formatos</li>
+                            <li>Configuración de autoguardado</li>
+                            <li>Protección de hojas y libros</li>
+                            <li>Configuración de impresión</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Práctica:</strong> Preparación de reportes para impresión
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 8 -->
+                <div class="modulo">
+                    <div class="modulo-header">
+                        <div class="modulo-title">Módulo 8 – Sesiones Extras y Proyecto Final</div>
+                        <div class="modulo-badge">Aplicación real</div>
+                    </div>
+                    <div class="modulo-content">
+                        <ul>
+                            <li>Práctica en vivo con ejercicios financieros reales</li>
+                            <li>Trucos y atajos personalizados</li>
+                            <li>Resolución de problemas comunes</li>
+                            <li>Proyecto final integrador</li>
+                        </ul>
+                        <div class="practica">
+                            <strong>Proyecto Final:</strong> Desarrollo de un sistema completo de gestión
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practica" style="margin-top: 30px; background-color: #e8f5e9;">
+                <p><strong>Nota:</strong> Cada sesión incluye tiempo dedicado para ejercicios prácticos y sesión de
+                    preguntas y respuestas (Q&A) para resolver dudas específicas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horario y Duración -->
+    <section id="horario">
+        <div class="container">
+            <div class="section-title">
+                <h2>Horario y Duración</h2>
+                <p>Formato diseñado para adaptarse a tu disponibilidad</p>
+            </div>
+
+            <div class="horario-info">
+                <div class="horario-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Duración Total</h3>
+                    <p><strong>2 meses</strong> (8 sesiones aproximadamente)</p>
+                    <p>Curso completo de Excel Básico a Intermedio</p>
+                </div>
+
+                <div class="horario-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horario</h3>
+                    <p><strong>3 horas cada sábado</strong></p>
+                    <p>Ejemplo: 9:00 AM - 12:00 PM</p>
+                    <p>(Hora de Honduras)</p>
+                </div>
+
+                <div class="horario-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Inicio</h3>
+                    <p><strong>En espera de confirmar fecha</strong></p>
+                    <p>Próximo grupo en formación</p>
+                    <p>Inscripciones abiertas</p>
+                </div>
+
+                <div class="horario-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Modalidad</h3>
+                    <p><strong>Presencial o Virtual</strong></p>
+                    <p>A elección del grupo</p>
+                    <p>Material disponible en ambas modalidades</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precio -->
+    <section id="precio" style="background-color: #f0f7ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Inversión</h2>
+                <p>Una inversión en habilidades que aumentarán tu productividad y valor profesional</p>
+            </div>
+
+            <div class="pricing-card">
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px; position: relative; z-index: 1;">Curso Completo de
+                    Excel</h3>
+                <p style="opacity: 0.9; position: relative; z-index: 1;">Básico-Intermedio</p>
+
+                <div class="price">L 2,000</div>
+
+                <div class="payment-option">
+                    <p style="font-size: 1.3rem; margin-bottom: 10px;">✅ Opciones de pago flexible</p>
+                    <p style="font-size: 1.5rem; font-weight: 700;">Pago único o en 2 cuotas</p>
+                    <p style="margin-top: 10px; opacity: 0.9;">Ajustado a tu presupuesto</p>
+                </div>
+
+                <ul class="pricing-features">
+                    <li>8 sesiones de 3 horas cada una</li>
+                    <li>Material descargable completo</li>
+                    <li>Ejercicios prácticos reales</li>
+                    <li>Soporte durante el curso</li>
+                    <li>Certificado de finalización</li>
+                    <li>Acceso a recursos exclusivos</li>
+                </ul>
+
+                <a href="#inscripcion" class="btn btn-secondary"
+                    style="font-size: 1.1rem; padding: 15px 40px; position: relative; z-index: 1;">¡Reserva tu Cupo!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inscripción -->
+    <section id="inscripcion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Inscripciones</h2>
+                <p>Únete al próximo grupo y domina Excel de una vez por todas</p>
+            </div>
+
+            <div class="inscripcion-container">
+                <h3 style="text-align: center; color: var(--dark); margin-bottom: 30px; font-size: 1.8rem;">¿Listo para
+                    comenzar?</h3>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">Para inscribirte o solicitar más
+                    información sobre el curso de Excel, contáctanos por cualquiera de estos medios:</p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Correo Electrónico</h4>
+                            <p>info@centroculturalsampedrano.edu</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>(123) 456-7890</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Centro Cultural Sampedrano</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="text-align: center; margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
+                    <p><strong>Proceso de inscripción:</strong></p>
+                    <p>1. Contacta con nosotros para verificar disponibilidad</p>
+                    <p>2. Recibe información detallada del curso</p>
+                    <p>3. Completa tu inscripción y selecciona método de pago</p>
+                    <p>4. Recibe materiales de bienvenida y preparación</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Efecto de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // A
