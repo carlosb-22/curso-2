@@ -432,8 +432,8 @@
             z-index: 1;
         }
 
-        /* Inscripción */
-        .inscripcion-container {
+        /* Formulario de contacto */
+        .contact-form {
             background-color: white;
             border-radius: 10px;
             padding: 40px;
@@ -442,25 +442,36 @@
             margin: 0 auto;
         }
 
-        .contact-info {
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--excel-green);
+            box-shadow: 0 0 0 3px rgba(33, 115, 70, 0.1);
+        }
+
+        .form-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--excel-green);
-            margin-right: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         /* Footer */
@@ -562,6 +573,14 @@
 
             .price {
                 font-size: 2.8rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 25px 20px;
             }
         }
     </style>
@@ -910,57 +929,99 @@
         <div class="container">
             <div class="section-title">
                 <h2>Inscripciones</h2>
-                <p>Únete al próximo grupo y domina Excel de una vez por todas</p>
+                <p>Completa el formulario para reservar tu cupo en el próximo grupo</p>
             </div>
 
-            <div class="inscripcion-container">
-                <h3 style="text-align: center; color: var(--dark); margin-bottom: 30px; font-size: 1.8rem;">¿Listo para
-                    comenzar?</h3>
-                <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">Para inscribirte o solicitar más
-                    información sobre el curso de Excel, contáctanos por cualquiera de estos medios:</p>
-
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Correo Electrónico</h4>
-                            <p>info@centroculturalsampedrano.edu</p>
+            <div class="contact-form">
+                <form id="inscripcionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Teléfono</h4>
-                            <p>(123) 456-7890</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ocupacion">Ocupación actual *</label>
+                            <input type="text" id="ocupacion" class="form-control" required
+                                placeholder="Ej: Estudiante, Empleado, Empresario, etc.">
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Dirección</h4>
-                            <p>Centro Cultural Sampedrano</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="experiencia">Nivel de experiencia con Excel *</label>
+                            <select id="experiencia" class="form-control" required>
+                                <option value="">Seleccione su nivel</option>
+                                <option value="principiante">Principiante (nunca he usado Excel)</option>
+                                <option value="basico">Básico (conozco lo esencial)</option>
+                                <option value="intermedio">Intermedio (uso fórmulas básicas)</option>
+                                <option value="avanzado">Avanzado (pero quiero repasar conceptos)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalidad">Modalidad preferida *</label>
+                            <select id="modalidad" class="form-control" required>
+                                <option value="">Seleccione modalidad</option>
+                                <option value="presencial">Presencial</option>
+                                <option value="virtual">Virtual</option>
+                                <option value="indiferente">Indiferente</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Horario de Atención</h4>
-                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="horario">Horario preferido *</label>
+                            <select id="horario" class="form-control" required>
+                                <option value="">Seleccione horario</option>
+                                <option value="manana">9:00 AM - 12:00 PM</option>
+                                <option value="tarde">2:00 PM - 5:00 PM</option>
+                                <option value="indiferente">Indiferente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pago">Preferencia de pago *</label>
+                            <select id="pago" class="form-control" required>
+                                <option value="">Seleccione opción</option>
+                                <option value="unico">Pago único (L. 2,000)</option>
+                                <option value="cuotas">2 cuotas mensuales (L. 1,000 cada una)</option>
+                            </select>
                         </div>
                     </div>
-                </div>
 
-                <div
-                    style="text-align: center; margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
-                    <p><strong>Proceso de inscripción:</strong></p>
-                    <p>1. Contacta con nosotros para verificar disponibilidad</p>
-                    <p>2. Recibe información detallada del curso</p>
-                    <p>3. Completa tu inscripción y selecciona método de pago</p>
-                    <p>4. Recibe materiales de bienvenida y preparación</p>
-                </div>
+                    <div class="form-group">
+                        <label for="objetivos">¿Cuáles son tus objetivos al tomar este curso? *</label>
+                        <textarea id="objetivos" class="form-control" rows="3" required
+                            placeholder="Ej: Mejorar en mi trabajo, prepararme para un examen, gestionar mis finanzas personales..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Comentarios o preguntas adicionales</label>
+                        <textarea id="mensaje" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 30px;">
+                        <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; padding: 15px;">
+                            <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                            Enviar solicitud de inscripción
+                        </button>
+                    </div>
+
+                    <p style="text-align: center; margin-top: 20px; color: var(--gray); font-size: 0.9rem;">
+                        Nos pondremos en contacto contigo en un plazo máximo de 48 horas para confirmar tu inscripción y
+                        proporcionarte los detalles de pago.
+                    </p>
+                </form>
             </div>
         </div>
     </section>
@@ -984,6 +1045,30 @@
             });
         });
 
+        // Manejo del formulario de inscripción
+        document.getElementById('inscripcionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validación simple
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+
+            if (!nombre || !email || !telefono) {
+                alert('Por favor complete todos los campos requeridos (*)');
+                return;
+            }
+
+            // Aquí normalmente enviarías los datos a un servidor
+            // Por ahora, solo mostraremos un mensaje de confirmación
+            alert('¡Excelente! Hemos recibido tu solicitud de inscripción para el curso de Excel.\n\n' +
+                'Nos pondremos en contacto contigo en las próximas 48 horas para confirmar tu lugar ' +
+                'y proporcionarte los detalles de pago.\n\n¡Gracias por tu interés!');
+
+            // Reseteamos el formulario
+            this.reset();
+        });
+
         // Efecto de aparición al hacer scroll
         const observerOptions = {
             threshold: 0.1,
@@ -999,4 +1084,14 @@
             });
         }, observerOptions);
 
-        // A
+        // Aplicar animación a las tarjetas y secciones
+        document.querySelectorAll('.card, .modulo, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
